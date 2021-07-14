@@ -106,22 +106,23 @@ Animation *animation;
 
 void setup()
 {
-	Serial.begin(9600);
-	animation = new Animation(5000);
-	animation->onStart([]()
-							 { Serial.println("Started animation"); });
-	animation->onInterval(1000, []()
-								 { Serial.println("1 second elapsed"); });
-	animation->onDone([]()
-							{
-								Serial.println("Animation finished");
-								animation->start(); // restart animation
-							});
-	animation->start();
+  Serial.begin(9600);
+  animation = new Animation(5000);
+  animation->onStart([]() {
+    Serial.println("Started animation");
+  });
+  animation->onInterval(1000, []() {
+    Serial.println("1 second elapsed");
+  });
+  animation->onDone([]() {
+    Serial.println("Animation finished");
+    animation->start(); // restart animation
+  });
+  animation->start();
 }
 
 void loop()
 {
-	animation->loop();
+  animation->loop();
 }
 ```
